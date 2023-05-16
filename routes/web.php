@@ -14,5 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts');
+});
+
+Route::get('/', function () {
+    return view('layouts');
+})->name('dashboard');
+Route::group(['prefix' => 'jenis-barang'], function (){
+    Route::match(['post', 'get'], '/', [\App\Http\Controllers\JenisBarangController::class, 'index'])->name('jenis-barang');
 });
